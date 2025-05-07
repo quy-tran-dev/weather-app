@@ -8,6 +8,10 @@ export interface ResponseWeatherCoord {
     id: number,
     message: string,
     cod: string,
+    // coord:  {
+    //     lon: number
+    //     lat: number
+    // },
     coord: Coord,
     weather: IconWeather[],
     base: string,

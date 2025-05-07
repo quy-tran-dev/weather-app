@@ -28,7 +28,6 @@ export class FetchingData {
         return data;
     }
 
-
     async getWeatherFollowCoord(lat: number, lon: number): Promise<ResponseWeatherCoord> {
         // https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid={apiKey}&lang=en
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={${this.apiUrl_Weather}}&lang=${this.lang}`)

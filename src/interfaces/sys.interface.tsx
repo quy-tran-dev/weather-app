@@ -4,6 +4,8 @@ export interface Sys {
     sunrise?: number
     sunset?: number
     id?: number
+    // [key: string]: number | string | undefined;
+
 }
 // "sys": {
 // "type": 2,
