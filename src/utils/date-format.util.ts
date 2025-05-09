@@ -9,6 +9,12 @@ export const formatDate = (date: Date): string => {
   return `${day}/${month}/${year} - ${hours}:${minutes}:${seconds}`;
 };
 
+export const formatDateDay = (date: Date): string => {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${day}/${month}`;
+};
+
 export const formatAMPM = (dt: number): string => {
   const date: Date = new Date(dt * 1000);
   let hours: number | string = date.getHours();
