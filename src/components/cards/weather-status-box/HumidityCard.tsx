@@ -8,7 +8,7 @@ export default function HumidityCard({ value , color  }: { value: number; color:
       <CardContent className="p-4 text-center text-black">
         <div className="flex items-center justify-between mx-auto mb-2 ">
           <p className="font-semibold text-xl">Humidity</p>
-          <div className="bg-blue-300 p-2 rounded-xl"><Droplets className="text-white" /></div>
+          <div className={`${color} p-2 rounded-xl opacity-95`}><Droplets className="text-white" /></div>
         </div>
         <p className="font-medium ">
           <span className="text-2xl font-semibold">{value}%</span> bad
