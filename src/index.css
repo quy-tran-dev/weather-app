@@ -17,11 +17,109 @@
     --main-pupple-color: #8F85CF;
     /* --secondary-blue-color: #3b82f6;
     --secondary-pupple-color: #c7d2fe; */
+    /* SCORCHINGSUN  scorching-sun*/
+
+    --main-cloudy-color: #B5D8FE;
+    --main-rainy-color: #223A5C;
+    --main-sunny-color: #F9EF9A;
+    --main-scorching-sun-color: #FFBF61;
+
+    --secondary-cloudy-color: #53A0F5;
+    --secondary-rainy-color: #4A708B;
+    --secondary-sunny-color: #F4CE54;
+    --secondary-scorching-sun-color: #FDA537;
+
+    --white-color: #fff;
+    --black-color: #000;
+
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.text-main-cloudy-color {
+    color: var(--main-cloudy-color);
+}
+
+.text-main-rainy-color {
+    color: var(--main-rainy-color);
+}
+
+.text-main-sunny-color {
+    color: var(--main-sunny-color);
+}
+
+.text-main-scorching-sun-color {
+    color: var(--main-scorching-sun-color);
+}
+
+.text-secondary-cloudy-color {
+    color: var(--secondary-cloudy-color);
+}
+
+.text-secondary-rainy-color {
+    color: var(--secondary-rainy-color);
+}
+
+.text-secondary-sunny-color {
+    color: var(--secondary-sunny-color);
+}
+
+.text-secondary-scorching-sun-color {
+    color: var(--secondary-scorching-sun-color);
+}
+
+.bg-main-cloudy-color {
+    background-color: var(--main-cloudy-color);
+}
+
+.bg-main-rainy-color {
+    background-color: var(--main-rainy-color);
+}
+
+.bg-main-sunny-color {
+    background-color: var(--main-sunny-color);
+}
+
+.bg-main-scorching-sun-color {
+    background-color: var(--main-scorching-sun-color);
+}
+
+.bg-secondary-cloudy-color {
+    background-color: var(--secondary-cloudy-color);
+}
+
+.bg-secondary-rainy-color {
+    background-color: var(--secondary-rainy-color);
+}
+
+.bg-secondary-sunny-color {
+    background-color: var(--secondary-sunny-color);
+}
+
+.bg-secondary-scorching-sun-color {
+    background-color: var(--secondary-scorching-sun-color);
+}
 
 .bg-main-blue {
     background-color: var(--main-blue-color);
+    opacity: 0.95;
 }
 
 .bg-main-pupple {
@@ -46,4 +144,4 @@
             var(--main-blue-color) 20%);
 }
 
-@import "tailwindcss"; 
+@import "tailwindcss";
