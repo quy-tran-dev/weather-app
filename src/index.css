@@ -19,7 +19,7 @@
     --secondary-pupple-color: #c7d2fe; */
     /* SCORCHINGSUN  scorching-sun*/
 
-    --main-cloudy-color: #B5D8FE;
+    /* --main-cloudy-color: #B5D8FE;
     --main-rainy-color: #223A5C;
     --main-sunny-color: #F9EF9A;
     --main-scorching-sun-color: #FFBF61;
@@ -27,7 +27,82 @@
     --secondary-cloudy-color: #53A0F5;
     --secondary-rainy-color: #4A708B;
     --secondary-sunny-color: #F4CE54;
-    --secondary-scorching-sun-color: #FDA537;
+    --secondary-scorching-sun-color: #FDA537; */
+
+    --main-thunderstorm-color: #5C6BC0;
+    /* Tím than, gợi cảm giác mạnh mẽ, giông bão */
+    --secondary-thunderstorm-color: #9FA8DA;
+    /* Tím nhạt hơn, tạo lớp màu */
+
+    --main-drizzle-color: #81D4FA;
+    /* Xanh da trời nhạt, tương tự cloudy nhưng nhạt hơn */
+    --secondary-drizzle-color: #B3E5FC;
+    /* Xanh da trời rất nhạt */
+
+    --main-rain-color: #223A5C;
+    /* Xanh đậm, giữ nguyên cho mưa */
+    --secondary-rain-color: #4A708B;
+    /* Xanh xám, giữ nguyên cho mưa thứ cấp */
+
+    --main-snow-color: #E0F2F7;
+    /* Trắng xanh nhạt, gợi cảm giác lạnh lẽo của tuyết */
+    --secondary-snow-color: #B2EBF2;
+    /* Xanh lơ nhạt */
+
+    --main-mist-color: #CFD8DC;
+    /* Xám nhạt, tượng trưng cho sương mù che phủ */
+    --secondary-mist-color: #ECEFF1;
+    /* Xám rất nhạt */
+
+    --main-smoke-color: #757575;
+    /* Xám trung bình, gợi khói */
+    --secondary-smoke-color: #BDBDBD;
+    /* Xám nhạt hơn */
+
+    --main-haze-color: #BCAAA4;
+    /* Nâu xám nhạt, tương tự bụi nhưng nhẹ hơn */
+    --secondary-haze-color: #D7CCC8;
+    /* Nâu xám rất nhạt */
+
+    --main-dust-color: #A1887F;
+    /* Nâu đất, gợi bụi */
+    --secondary-dust-color: #D2CBB0;
+    /* Nâu nhạt hơn */
+
+    --main-fog-color: #90A4AE;
+    /* Xám xanh trung bình, đậm hơn sương mù */
+    --secondary-fog-color: #B0BEC5;
+    /* Xám xanh nhạt hơn */
+
+    --main-sand-color: #F0E68C;
+    /* Vàng cát nhạt */
+    --secondary-sand-color: #FFF8DC;
+    /* Màu be */
+
+    --main-ash-color: #616161;
+    /* Xám đậm, tro tàn */
+    --secondary-ash-color: #9E9E9E;
+    /* Xám trung bình */
+
+    --main-squall-color: #455A64;
+    /* Xanh xám đậm, gió mạnh */
+    --secondary-squall-color: #607D8B;
+    /* Xanh xám nhạt hơn */
+
+    --main-tornado-color: #212121;
+    /* Đen, nguy hiểm */
+    --secondary-tornado-color: #424242;
+    /* Xám đen */
+
+    --main-clear-color: #FDD835;
+    /* Vàng tươi, tương tự sunny nhưng có thể tươi hơn */
+    --secondary-clear-color: #FFF59D;
+    /* Vàng nhạt hơn */
+
+    --main-clouds-color: #B5D8FE;
+    /* Xanh da trời nhạt, giữ nguyên cho mây (tổng quan) */
+    --secondary-clouds-color: #E1F5FE;
+    /* Xanh da trời rất nhạt */
 
     --white-color: #fff;
     --black-color: #000;
@@ -53,85 +128,327 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
+/* Màu cho trạng thái Thunderstorm */
+.text-main-thunderstorm-color {
+    color: var(--main-thunderstorm-color);
+}
+
+.text-secondary-thunderstorm-color {
+    color: var(--secondary-thunderstorm-color);
+}
+
+.bg-main-thunderstorm-color {
+    background-color: var(--main-thunderstorm-color);
+}
+
+.bg-secondary-thunderstorm-color {
+    background-color: var(--secondary-thunderstorm-color);
+}
+
+/* Màu cho trạng thái Drizzle */
+.text-main-drizzle-color {
+    color: var(--main-drizzle-color);
+}
+
+.text-secondary-drizzle-color {
+    color: var(--secondary-drizzle-color);
+}
+
+.bg-main-drizzle-color {
+    background-color: var(--main-drizzle-color);
+}
+
+.bg-secondary-drizzle-color {
+    background-color: var(--secondary-drizzle-color);
+}
+
+/* Màu cho trạng thái Rain */
+.text-main-rain-color {
+    color: var(--main-rain-color);
+}
+
+.text-secondary-rain-color {
+    color: var(--secondary-rain-color);
+}
+
+.bg-main-rain-color {
+    background-color: var(--main-rain-color);
+}
+
+.bg-secondary-rain-color {
+    background-color: var(--secondary-rain-color);
+}
+
+/* Màu cho trạng thái Snow */
+.text-main-snow-color {
+    color: var(--main-snow-color);
+}
+
+.text-secondary-snow-color {
+    color: var(--secondary-snow-color);
+}
+
+.bg-main-snow-color {
+    background-color: var(--main-snow-color);
+}
+
+.bg-secondary-snow-color {
+    background-color: var(--secondary-snow-color);
+}
+
+/* Màu cho trạng thái Mist */
+.text-main-mist-color {
+    color: var(--main-mist-color);
+}
+
+.text-secondary-mist-color {
+    color: var(--secondary-mist-color);
+}
+
+.bg-main-mist-color {
+    background-color: var(--main-mist-color);
+}
+
+.bg-secondary-mist-color {
+    background-color: var(--secondary-mist-color);
+}
+
+/* Màu cho trạng thái Smoke */
+.text-main-smoke-color {
+    color: var(--main-smoke-color);
+}
+
+.text-secondary-smoke-color {
+    color: var(--secondary-smoke-color);
+}
+
+.bg-main-smoke-color {
+    background-color: var(--main-smoke-color);
+}
+
+.bg-secondary-smoke-color {
+    background-color: var(--secondary-smoke-color);
+}
+
+/* Màu cho trạng thái Haze */
+.text-main-haze-color {
+    color: var(--main-haze-color);
+}
+
+.text-secondary-haze-color {
+    color: var(--secondary-haze-color);
+}
+
+.bg-main-haze-color {
+    background-color: var(--main-haze-color);
+}
+
+.bg-secondary-haze-color {
+    background-color: var(--secondary-haze-color);
+}
+
+/* Màu cho trạng thái Dust */
+.text-main-dust-color {
+    color: var(--main-dust-color);
+}
+
+.text-secondary-dust-color {
+    color: var(--secondary-dust-color);
+}
+
+.bg-main-dust-color {
+    background-color: var(--main-dust-color);
+}
+
+.bg-secondary-dust-color {
+    background-color: var(--secondary-dust-color);
+}
+
+/* Màu cho trạng thái Fog */
+.text-main-fog-color {
+    color: var(--main-fog-color);
+}
+
+.text-secondary-fog-color {
+    color: var(--secondary-fog-color);
+}
+
+.bg-main-fog-color {
+    background-color: var(--main-fog-color);
+}
+
+.bg-secondary-fog-color {
+    background-color: var(--secondary-fog-color);
+}
+
+/* Màu cho trạng thái Sand */
+.text-main-sand-color {
+    color: var(--main-sand-color);
+}
+
+.text-secondary-sand-color {
+    color: var(--secondary-sand-color);
+}
+
+.bg-main-sand-color {
+    background-color: var(--main-sand-color);
+}
+
+.bg-secondary-sand-color {
+    background-color: var(--secondary-sand-color);
+}
+
+/* Màu cho trạng thái Ash */
+.text-main-ash-color {
+    color: var(--main-ash-color);
+}
+
+.text-secondary-ash-color {
+    color: var(--secondary-ash-color);
+}
+
+.bg-main-ash-color {
+    background-color: var(--main-ash-color);
+}
+
+.bg-secondary-ash-color {
+    background-color: var(--secondary-ash-color);
+}
+
+/* Màu cho trạng thái Squall */
+.text-main-squall-color {
+    color: var(--main-squall-color);
+}
+
+.text-secondary-squall-color {
+    color: var(--secondary-squall-color);
+}
+
+.bg-main-squall-color {
+    background-color: var(--main-squall-color);
+}
+
+.bg-secondary-squall-color {
+    background-color: var(--secondary-squall-color);
+}
+
+/* Màu cho trạng thái Tornado */
+.text-main-tornado-color {
+    color: var(--main-tornado-color);
+}
+
+.text-secondary-tornado-color {
+    color: var(--secondary-tornado-color);
+}
+
+.bg-main-tornado-color {
+    background-color: var(--main-tornado-color);
+}
+
+.bg-secondary-tornado-color {
+    background-color: var(--secondary-tornado-color);
+}
+
+/* Màu cho trạng thái Clear */
+.text-main-clear-color {
+    color: var(--main-clear-color);
+}
+
+.text-secondary-clear-color {
+    color: var(--secondary-clear-color);
+}
+
+.bg-main-clear-color {
+    background-color: var(--main-clear-color);
+}
+
+.bg-secondary-clear-color {
+    background-color: var(--secondary-clear-color);
+}
+
+/* Màu cho trạng thái Clouds */
+.text-main-clouds-color {
+    color: var(--main-clouds-color);
+}
+
+.text-secondary-clouds-color {
+    color: var(--secondary-clouds-color);
+}
+
+.bg-main-clouds-color {
+    background-color: var(--main-clouds-color);
+}
+
+.bg-secondary-clouds-color {
+    background-color: var(--secondary-clouds-color);
+}
+
+/* Màu cho trạng thái Cloudy (giữ nguyên) */
 .text-main-cloudy-color {
     color: var(--main-cloudy-color);
-}
-
-.text-main-rainy-color {
-    color: var(--main-rainy-color);
-}
-
-.text-main-sunny-color {
-    color: var(--main-sunny-color);
-}
-
-.text-main-scorching-sun-color {
-    color: var(--main-scorching-sun-color);
 }
 
 .text-secondary-cloudy-color {
     color: var(--secondary-cloudy-color);
 }
 
-.text-secondary-rainy-color {
-    color: var(--secondary-rainy-color);
-}
-
-.text-secondary-sunny-color {
-    color: var(--secondary-sunny-color);
-}
-
-.text-secondary-scorching-sun-color {
-    color: var(--secondary-scorching-sun-color);
-}
-
 .bg-main-cloudy-color {
     background-color: var(--main-cloudy-color);
-}
-
-.bg-main-rainy-color {
-    background-color: var(--main-rainy-color);
-}
-
-.bg-main-sunny-color {
-    background-color: var(--main-sunny-color);
-}
-
-.bg-main-scorching-sun-color {
-    background-color: var(--main-scorching-sun-color);
 }
 
 .bg-secondary-cloudy-color {
     background-color: var(--secondary-cloudy-color);
 }
 
+/* Màu cho trạng thái Rainy (giữ nguyên) */
+.text-main-rainy-color {
+    color: var(--main-rainy-color);
+}
+
+.text-secondary-rainy-color {
+    color: var(--secondary-rainy-color);
+}
+
+.bg-main-rainy-color {
+    background-color: var(--main-rainy-color);
+}
+
 .bg-secondary-rainy-color {
     background-color: var(--secondary-rainy-color);
+}
+
+/* Màu cho trạng thái Sunny (giữ nguyên) */
+.text-main-sunny-color {
+    color: var(--main-sunny-color);
+}
+
+.text-secondary-sunny-color {
+    color: var(--secondary-sunny-color);
+}
+
+.bg-main-sunny-color {
+    background-color: var(--main-sunny-color);
 }
 
 .bg-secondary-sunny-color {
     background-color: var(--secondary-sunny-color);
 }
 
+/* Màu cho trạng thái Scorching Sun (giữ nguyên) */
+.text-main-scorching-sun-color {
+    color: var(--main-scorching-sun-color);
+}
+
+.text-secondary-scorching-sun-color {
+    color: var(--secondary-scorching-sun-color);
+}
+
+.bg-main-scorching-sun-color {
+    background-color: var(--main-scorching-sun-color);
+}
+
 .bg-secondary-scorching-sun-color {
     background-color: var(--secondary-scorching-sun-color);
-}
-
-.bg-main-blue {
-    background-color: var(--main-blue-color);
-    opacity: 0.95;
-}
-
-.bg-main-pupple {
-    background-color: var(--main-pupple-color);
-}
-
-.text-main-blue {
-    color: var(--main-blue-color);
-}
-
-.text-main-pupple {
-    color: var(--main-pupple-color);
 }
 
 .bg-gradient-main {

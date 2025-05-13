@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function InputSearch() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [isClicked, setIsClicked] = useState(false);
+    const [isClicked, setIsClicked] = useState(true);
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>,) => {
         e.preventDefault();
@@ -13,8 +13,8 @@ export default function InputSearch() {
         <div className="flex items-center justify-end rounded-xl shadow-sm w-full">
             {
                 isClicked ?
-                    <div className="flex items-center gap-3 ml-2 text-gray-600">
-                        <h3 className="text-2xl font-semibold text-gray-300">Thời tiết</h3>
+                    <div className="flex items-center gap-3 ml-2 text-gray-600 ">
+                        {/* <h3 className="text-2xl font-semibold text-gray-300">Thời tiết</h3> */}
                         <button className="text-gray-400 px-3 py-2" type="submit" onClick={() => setIsClicked(false)}>
                             <i className="fas fa-search">
                             </i>

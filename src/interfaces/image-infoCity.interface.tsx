@@ -11,6 +11,9 @@ export interface ImageInfoCity {
     previewURL: string,
     previewWidth: number,
     previewHeight: number
+    largeImageURL: string,
+    imageWidth: number,
+    imageHeight: number
 }
 
 

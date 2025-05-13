@@ -1,31 +1,31 @@
+import type { City } from "../city.interface";
 import type { Coord } from "../coord.interface";
 import type { IconWeather } from "../icon-weather.interface";
 import type { MainWeather } from "../main-weather.interface";
 import type { Sys } from "../sys.interface";
 import type { Wind } from "../wind.interface";
 
+interface WeatherCoord {
+    dt : number
+    main: MainWeather
+    weather: IconWeather[]
+    clouds: {
+        [key: string]: number | string;
+    }
+    wind: Wind
+    visibility: number
+    pop: number
+    sys: Sys
+}
+
+
 export interface ResponseWeatherCoord {
-    id: number,
-    message: string,
-    cod: string,
+   city:City
     // coord:  {
     //     lon: number
     //     lat: number
     // },
-    coord: Coord,
-    weather: IconWeather[],
-    base: string,
-    main: MainWeather,
-    visibility: number,
-    wind: Wind,
-    rain: {
-        [key: string]: number|string
-    },
-    clouds: {
-        [key: string]: number|string
-    },
-    dt: number,
-    sys: Sys
+   list : WeatherCoord[]
 }
 
 

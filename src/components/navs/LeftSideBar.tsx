@@ -1,10 +1,47 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { sidebarVariants } from '../../lib/animation';
 import InputSearch from '../searching/InputSearch';
 import InfoCityCard from '../cards/InfoCityCard';
+import type { ResponseWeatherCoord } from '../../interfaces/responses/weather-coord.interface';
+import { ConvertStringToSlug } from '../../utils/hanlde-string.util';
+import { weatherConfig } from '../../lib/weather-config';
 
-export default function LeftSideBar({ bgWeatherSecondary }:{bgWeatherSecondary: string}) {
+export default function LeftSideBar({ bgWeatherSecondary, statusWeather, currentCity }: { bgWeatherSecondary: string, statusWeather: string | null, currentCity: ResponseWeatherCoord | null }) {
+    const [keyWeather, setKeyWeather] = React.useState<{[key: string]:string}>(
+        {
+            en: 'Day Cloudy sky',
+            vi: 'Bầu trời có mây ban ngày',
+            img: "https://cdn.pixabay.com/photo/2018/07/02/22/18/sunflower-3512656_1280.jpg"
+        }
+    );
+
+    const getImg = (status: string) => {
+        const slugifiedStatus = ConvertStringToSlug(status);
+        let config;
+        console.log('status: ' + status + ' slugifiedStatus: ' + slugifiedStatus);
+
+        if (Object.prototype.hasOwnProperty.call(weatherConfig.color_status, slugifiedStatus)) {
+            config = weatherConfig.color_status[slugifiedStatus];
+        } else {
+            const cloudyStatus = ConvertStringToSlug("cloudy");
+            if (Object.prototype.hasOwnProperty.call(weatherConfig.color_status, cloudyStatus)) {
+                config = weatherConfig.color_status[cloudyStatus];
+            } else {
+                console.error("Error: 'cloudy' status configuration not found.");
+                return;
+            }
+        }
+
+        if (config) {
+            setKeyWeather(config.key);
+        }
+    };
+
+    useEffect(() => {
+        getImg(statusWeather || 'https://cdn.pixabay.com/photo/2018/07/02/22/18/sunflower-3512656_1280.jpg');
+    }, [statusWeather]);
+
     return (
         <motion.div
             className={`${bgWeatherSecondary} rounded-3xl relative text-white col-span-1 lg:col-span-1 p-2 overflow-hidden flex flex-col justify-between h-full`}
@@ -16,11 +53,11 @@ export default function LeftSideBar({ bgWeatherSecondary }:{bgWeatherSecondary: 
                 <InputSearch />
             </div>
             <div className='flex flex-col mt-2 gap-4 h-full overflow-y-auto custom-scrollbar [&::-webkit-scrollbar]:hidden'>
-                {
+                {/* {
                     Array.from({ length: 5 }).map((_, index) => (
                        <InfoCityCard key={index} />
                     ))
-                }
+                } */}
 
                 {/* Có thể thêm các item khác vào đây với animation tương tự nếu cần */}
             </div>
@@ -30,8 +67,8 @@ export default function LeftSideBar({ bgWeatherSecondary }:{bgWeatherSecondary: 
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.7 }}
             >
-                <img src='https://cdn.pixabay.com/photo/2018/07/02/22/18/sunflower-3512656_1280.jpg'
-                    alt="Sunflower background"
+                <img src={keyWeather.img}
+                    alt={keyWeather.en}
                     className="h-full w-full object-cover rounded-4xl py-5 px-2" // Giảm opacity để nội dung dễ đọc hơn
                 />
             </motion.div>

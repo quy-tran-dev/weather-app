@@ -16,9 +16,7 @@ export interface IWeatherColorStatus {
 }
 
 export interface IWeatherConfig {
-    apiUrl_Weather: string,
-    apiUrl_Pixabay: string,
-    lang: string,
+   
     color_status: IWeatherColorStatus
 }
 
