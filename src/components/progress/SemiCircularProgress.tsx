@@ -1,4 +1,5 @@
 import React from 'react';
+import { weatherConfig } from '../../lib/weather-config';
 
 interface SemiCircleProgressBarProps {
     progress: number; // Value between 0 and 100
@@ -16,7 +17,7 @@ const SemiCircleProgressBar: React.FC<SemiCircleProgressBarProps> = ({
     progress,
     radius = 50,
     strokeWidth = 10,
-    color = 'text-main-cloudy-color',
+    color = weatherConfig.color_status.cloudy.text_main,
     bgColor = 'bg-gray-200',
     className,
     showProgressText = true,
@@ -44,20 +45,37 @@ const SemiCircleProgressBar: React.FC<SemiCircleProgressBarProps> = ({
         // case 'text-main-sunny-color': return 'rgba(249, 239, 154, 1)';
         // case 'text-main-scorching-sun-color': return 'rgba(255, 191, 97, 1)';
         // Added for text color example
-        switch (tailwindClass) {
-            case 'text-blue-500': return 'rgba(59, 130, 246, 1)';
-            case 'text-green-500': return 'rgba(22, 163, 74, 1)';
-            case 'text-red-500': return 'rgba(220, 38, 38, 1)';
-            case 'text-yellow-500': return 'rgba(252, 211, 77, 1)';
-            case 'text-gray-700': return 'rgba(55, 65, 81, 1)';
-            case 'text-gray-500': return 'rgba(107, 114, 128, 1 )';
-            case 'text-main-cloudy-color': return 'rgba(181, 216, 254, 1)';
-            case 'text-main-rainy-color': return 'rgba(34, 58, 92, 1)';
-            case 'text-main-sunny-color': return 'rgba(249, 239, 154, 1)';
-            case 'text-main-scorching-sun-color': return 'rgba(255, 191, 97, 1)';
-            // Added for text color example
-            default: return 'rgba(0, 0, 0, 1)'; // Default to black
-        }
+        // switch (tailwindClass) {
+        //     case 'text-blue-500': return 'rgba(59, 130, 246, 1)';
+        //     case 'text-green-500': return 'rgba(22, 163, 74, 1)';
+        //     case 'text-red-500': return 'rgba(220, 38, 38, 1)';
+        //     case 'text-yellow-500': return 'rgba(252, 211, 77, 1)';
+        //     case 'text-gray-700': return 'rgba(55, 65, 81, 1)';
+        //     case 'text-gray-500': return 'rgba(107, 114, 128, 1 )';
+        //     case 'text-main-cloudy-color': return 'rgba(181, 216, 254, 1)';
+        //     case 'text-main-rainy-color': return 'rgba(34, 58, 92, 1)';
+        //     case 'text-main-sunny-color': return 'rgba(249, 239, 154, 1)';
+        //     case 'text-main-scorching-sun-color': return 'rgba(255, 191, 97, 1)';
+        //     // Added for text color example
+        //     default: return 'rgba(0, 0, 0, 1)'; // Default to black
+        // }
+        let rgbaColor: string = 'rgba(0, 0, 0, 1)';
+        Object.keys(weatherConfig.color_status).map((key) => {
+            if (weatherConfig.color_status[key].text_main == tailwindClass) {
+                return rgbaColor = weatherConfig.color_status[key].rgba_text_main
+            }
+            if (weatherConfig.color_status[key].text_secondary == tailwindClass) {
+                return rgbaColor = weatherConfig.color_status[key].rgba_text_secondary
+            }
+            if (weatherConfig.color_status[key].bg_main == tailwindClass) {
+                return rgbaColor = weatherConfig.color_status[key].rgba_bg_main
+            }
+            if (weatherConfig.color_status[key].bg_secondary == tailwindClass) {
+                return rgbaColor = weatherConfig.color_status[key].rgba_bg_secondary
+            }
+            return rgbaColor = 'rgba(0, 0, 0, 1)';
+        })
+        return rgbaColor;
     };
 
     const getSvgBgColor = (tailwindClass: string) => {
