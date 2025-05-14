@@ -57,12 +57,12 @@ export default function InfoCityCard({ side = false, infoCity, nameCity = "Ho Ch
 
     return (
         <motion.div
-            className="z-10 p-3 sm:p-4 text-shadow-lg/30 rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-sm shadow-md relative"
+            className={`z-10 p-3 sm:p-4 text-shadow-lg/30 rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-sm shadow-md relative ${side ?  "h-full w-full": ""}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
         >
-            <div className={`relative p-3 sm:p-4 ${side ? 'min-h-[400px]' : ' hover:cursor-pointer hover:scale-105'} transition-all duration-300`}>
+            <div className={`relative p-3 sm:p-4 ${side ? 'min-h-[400px] h-full' : ' hover:cursor-pointer hover:scale-[102%]'} transition-all duration-300`}>
                 {loading || !infoCity ? (
                     // Hiển thị skeleton khi đang tải hoặc không có dữ liệu thời tiết
                     <>

@@ -18,6 +18,7 @@ export default function DayCard({ time, icon, altIcon, day, value }: { time: str
                     {value}
                 </span>
                 <img alt={altIcon} className="mt-1" height="90" width="90" src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
-            </div> </motion.div>
+            </div>
+        </motion.div>
     )
 }

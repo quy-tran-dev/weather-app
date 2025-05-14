@@ -2,7 +2,7 @@ import { div } from "framer-motion/client";
 import { X } from "lucide-react";
 import { useState } from "react";
 
-export default function InputSearch() {
+export default function InputSearch({ toggleLeftSideBar }: { toggleLeftSideBar?: () => void }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [isClicked, setIsClicked] = useState(true);
 
@@ -15,10 +15,16 @@ export default function InputSearch() {
                 isClicked ?
                     <div className="flex items-center gap-3 ml-2 text-gray-600 ">
                         {/* <h3 className="text-2xl font-semibold text-gray-300">Thời tiết</h3> */}
-                        <button className="text-gray-400 px-3 py-2" type="submit" onClick={() => setIsClicked(false)}>
+                        <button className="text-gray-400 px-3 py-2 cursor-pointer hover:scale-110 hover:text-white transition-all duration-100" type="submit" onClick={() => setIsClicked(false)}>
                             <i className="fas fa-search">
                             </i>
                         </button>
+                        {
+                            toggleLeftSideBar && <button className="text-gray-400 px-3 py-2 cursor-pointer hover:scale-110 hover:text-white transition-all duration-100" type="submit" onClick={() => toggleLeftSideBar()}>
+                                <i className="fas fa-arrow-left">
+                                </i>
+                            </button>
+                        }
                     </div>
                     :
                     <div className="flex items-center gap-1 ml-2 text-gray-600 w-full">
@@ -31,7 +37,7 @@ export default function InputSearch() {
                         </form>
                         <div className="flex items-center p-2 rounded-xl cursor-pointer hover:scale-110">
                             <button className="text-lg text-gray-600 transition-colors duration-300 hover:scale-110">
-                                <X className=" cursor-pointer hover:scale-110 hover:text-red-400 transition duration-300" onClick={() => setIsClicked(true)}/>
+                                <X className=" cursor-pointer hover:scale-110 hover:text-red-400 transition duration-300" onClick={() => setIsClicked(true)} />
                             </button>
                         </div>
                     </div>

@@ -7,15 +7,14 @@ import type { ResponseWeatherCoord } from '../../interfaces/responses/weather-co
 import { ConvertStringToSlug } from '../../utils/hanlde-string.util';
 import { weatherConfig } from '../../lib/weather-config';
 
-export default function LeftSideBar({ bgWeatherSecondary, statusWeather, currentCity, toggleLeftSideBar }: { bgWeatherSecondary: string, statusWeather: string | null, currentCity: ResponseWeatherCoord | null, toggleLeftSideBar: () => void }) {
-    const [keyWeather, setKeyWeather] = React.useState<{[key: string]:string}>(
+export default function SearchSide({ bgWeatherSecondary, statusWeather, currentCity }: { bgWeatherSecondary: string, statusWeather: string | null, currentCity: ResponseWeatherCoord | null }) {
+    const [keyWeather, setKeyWeather] = React.useState<{ [key: string]: string }>(
         {
             en: 'Day Cloudy sky',
             vi: 'Bầu trời có mây ban ngày',
             img: "https://cdn.pixabay.com/photo/2018/07/02/22/18/sunflower-3512656_1280.jpg"
         }
     );
-
     const getImg = (status: string) => {
         const slugifiedStatus = ConvertStringToSlug(status);
         let config;
@@ -44,34 +43,30 @@ export default function LeftSideBar({ bgWeatherSecondary, statusWeather, current
 
     return (
         <motion.div
-            className={`${bgWeatherSecondary} rounded-3xl relative text-white col-span-1 lg:col-span-1 p-2 overflow-hidden flex flex-col justify-between h-full`}
-            variants={sidebarVariants}
-            initial="hidden"
-            animate="visible"
+            className={`${bgWeatherSecondary}  rounded-2xl relative text-white w-full h-full p-4 overflow-hidden flex flex-col justify-between`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
         >
-            <div className='z-10 p-3 sm:p-4 text-shadow-lg/30 flex items-center rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-sm'>
-                <InputSearch toggleLeftSideBar={toggleLeftSideBar}/>
-            </div>
             <div className='flex flex-col mt-2 gap-4 h-full overflow-y-auto custom-scrollbar [&::-webkit-scrollbar]:hidden'>
-                {/* {
+                <div className='z-10 p-3 sm:p-4 text-shadow-lg/30 flex items-center rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-sm'>
+                    <InputSearch />
+                </div>
+                {
                     Array.from({ length: 5 }).map((_, index) => (
-                       <InfoCityCard key={index} />
+                        <InfoCityCard key={index} infoCity={currentCity} nameCity={currentCity?.city.name} />
                     ))
-                } */}
-
-                {/* Có thể thêm các item khác vào đây với animation tương tự nếu cần */}
+                }
             </div>
-            <motion.div
-                className="absolute inset-x-0 top-0 m-2 mt-0 h-full rounded-2xl " // Đảm bảo z-index thấp hơn
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.7 }}
+            <div
+                className="absolute inset-x-0 top-0 m-2 mt-0 h-full rounded-2xl p-[2px] py-2"
+                style={{ opacity: 0.7 }}
             >
                 <img src={keyWeather.img}
                     alt={keyWeather.en}
-                    className="h-full w-full object-cover rounded-4xl py-5 px-2" // Giảm opacity để nội dung dễ đọc hơn
+                    className="h-full w-full object-cover rounded-xl"
                 />
-            </motion.div>
+            </div>
         </motion.div>
-    )
+    );
 }

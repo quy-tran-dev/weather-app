@@ -37,4 +37,13 @@ const cardItemVariants = {
     }
 };
 
-export { sidebarVariants, rightContentVariants, cardListVariants, cardItemVariants };
+ const getLeftSideVariants = (setIsClosing: React.Dispatch<React.SetStateAction<boolean>>) => ({
+    open: { x: 0, transition: { type: 'spring', stiffness: 200, damping: 30 } },
+    closed: {
+        x: '-100%',
+        transition: { duration: 0.3 },
+        onAnimationComplete: () => setIsClosing(false),
+    },
+});
+
+export { sidebarVariants, rightContentVariants, cardListVariants, cardItemVariants, getLeftSideVariants };

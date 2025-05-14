@@ -15,26 +15,42 @@ import { FetchingData } from '../services/fetch.service';
 import { setCookie } from 'nookies';
 import type { ResponseWeatherCoord } from '../interfaces/responses/weather-coord.interface';
 
+import { Menu, SearchIcon } from 'lucide-react';
+import { getLeftSideVariants } from '../lib/animation';
+import DynamicPopup from '../components/popups/DynamicPopup';
+import SearchSide from '../components/searching/SearchSide';
+
 const DEFAULT_LATITUDE = 10.762622;
 const DEFAULT_LONGITUDE = 106.660172;
 export default function MainLayout() {
 
     const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
+
+
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const openPopup = () => setIsPopupOpen(true);
+    const closePopup = () => setIsPopupOpen(false);
+
+
     const [bgWeatherMain, setBgWeatherMain] = useState<string>(weatherConfig.color_status.cloudy.bg_main);
     const [rgbaWeatherMain, setRgbaWeatherMain] = useState<string>(weatherConfig.color_status.cloudy.rgba_bg_main);
     const [textWeatherMain, setTextWeatherMain] = useState<string>(weatherConfig.color_status.cloudy.text_main);
     const [bgWeatherSecondary, setBgWeatherSecondary] = useState<string>(weatherConfig.color_status.cloudy.bg_secondary);
     const [textWeatherSecondary, setTextWeatherSecondary] = useState<string>(weatherConfig.color_status.cloudy.text_secondary);
+
     const [currentLat, setCurrentLat] = useState<number | null>(null);
     const [currentLon, setCurrentLon] = useState<number | null>(null);
     const [currentCity, setCurrentCity] = useState<ResponseWeatherCoord | null>(null);
     const [statusWeather, setStatusWeather] = useState<string | null>(null);
+
+
     const fetchingDataService = new FetchingData();
 
     const getColor = (status: string) => {
         const slugifiedStatus = ConvertStringToSlug(status);
         let config;
-        console.log('status: ' + status + ' slugifiedStatus: ' + slugifiedStatus);
+        // console.log('status: ' + status + ' slugifiedStatus: ' + slugifiedStatus);
 
         if (Object.prototype.hasOwnProperty.call(weatherConfig.color_status, slugifiedStatus)) {
             config = weatherConfig.color_status[slugifiedStatus];
@@ -77,12 +93,17 @@ export default function MainLayout() {
         } catch (error) {
             console.error('Lỗi khi gọi service thời tiết:', error);
             getColor('Cloudy');
+        } finally {
+            setLoadingInitial(false);
         }
+    };
+
+    const toggleLeftSideBar = () => {
+        openPopup();
     };
 
     useEffect(() => {
         const getInitialLocation = async () => {
-            setLoadingInitial(false);
             let initialLat = DEFAULT_LATITUDE;
             let initialLon = DEFAULT_LONGITUDE;
 
@@ -134,11 +155,11 @@ export default function MainLayout() {
             [-33.8688, 151.2093], // Sydney
             [10.7626, 106.6602], //VN
         ][Math.floor(Math.random() * 8)];
-    
+
         setCurrentLat(randomLatLon[0]);
         setCurrentLon(randomLatLon[1]);
         getColor(randomStatus);
-        console.log(`Random status: ${randomStatus}: ${bgWeatherMain}`);
+        // console.log(`Random status: ${randomStatus}: ${bgWeatherMain}`);
     };
 
     return (
@@ -159,25 +180,49 @@ export default function MainLayout() {
                             ${loadingInitial ? 'bg-gray-100' : bgWeatherSecondary} transition-colors duration-500`}
                 >
                     {/* Left Sidebar */}
-                    {loadingInitial ? (
-                        <LeftSideSkeleton />
-                    ) : (
-                        <LeftSideBar bgWeatherSecondary={bgWeatherSecondary} statusWeather={statusWeather} currentCity={currentCity} />
-                    )}
-
-                    {/* Right Content */}
-                    <div
-                        className={`relative col-span-1 lg:col-span-3 p-0 sm:p-2 rounded-3xl h-full overflow-hidden text-black 
-                              ${loadingInitial ? 'bg-white' : 'bg-white'}`}
+                    <DynamicPopup
+                        isOpen={isPopupOpen}
+                        onClose={closePopup}
+                        direction="bottom-top" // Hoặc "top-bottom", "left-right", "right-left"
                     >
+                        <motion.div
+                            variants={{
+                                open: { y: 0 },
+                                closed: { y: '-100%' },
+                            }}
+                            initial="closed"
+                            animate={isPopupOpen ? "open" : "closed"}
+                            transition={{ duration: 0.3 }}
+                            className="flex w-full h-full  z-20 overflow-y-auto custom-scrollbar" // Sử dụng position: fixed để không ảnh hưởng đến grid trực tiếp
+                        >
+                            <SearchSide bgWeatherSecondary={bgWeatherSecondary} statusWeather={statusWeather} currentCity={currentCity} />
+                        </motion.div>
+                    </DynamicPopup>
+                    {/* Right Content */}
+                    <motion.div
+                        className={`relative col-span-1 lg:col-span-4 p-0 sm:p-2 top-0 rounded-3xl h-full overflow-hidden text-black ${loadingInitial ? 'bg-white' : 'bg-white'} transition-all duration-500 `}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+
                         {loadingInitial ? (
                             <RightSideSkeleton />
                         ) : (
                             <RightSide bgWeatherSecondary={bgWeatherMain} currentCity={currentCity} />
                         )}
-                    </div>
+                    </motion.div>
                 </div>
             </SkeletonTheme>
+            {!loadingInitial && !isPopupOpen && (
+                <button
+                    onClick={toggleLeftSideBar}
+                    className={`absolute bottom-4 right-4 ${textWeatherMain} cursor-pointer bg-white p-2 rounded-md shadow-md z-20 hover:bg-gray-700 transition-colors duration-300`}
+                >
+                    {/* Bạn có thể thay thế bằng icon menu */}
+                    <SearchIcon className='hover:scale-110' />
+                </button>
+            )}
         </motion.div>
     );
 }
