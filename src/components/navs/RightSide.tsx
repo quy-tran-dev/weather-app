@@ -15,7 +15,7 @@ export default function RightSide({ bgWeatherSecondary, currentCity, }: { bgWeat
 
     return (
         <motion.div
-            className='p-3 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto h-full custom-scrollbar [&::-webkit-scrollbar]:hidden'
+            className='p-2 sm:p-4 space-y-4 sm:space-y-6 overflow-y-auto h-full custom-scrollbar [&::-webkit-scrollbar]:hidden'
             variants={rightContentVariants} // Áp dụng variant cho toàn bộ right content
             initial="hidden"
             animate="visible"

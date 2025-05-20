@@ -52,11 +52,7 @@ export default function SearchSide({ bgWeatherSecondary, statusWeather, currentC
                 <div className='z-10 p-3 sm:p-4 text-shadow-lg/30 flex items-center rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-sm'>
                     <InputSearch />
                 </div>
-                {
-                    Array.from({ length: 5 }).map((_, index) => (
-                        <InfoCityCard key={index} infoCity={currentCity} nameCity={currentCity?.city.name} />
-                    ))
-                }
+               
             </div>
             <div
                 className="absolute inset-x-0 top-0 m-2 mt-0 h-full rounded-2xl p-[2px] py-2"

@@ -65,7 +65,7 @@ export class FetchingData {
         return data;
     }
 
-    async getImageInfoChoseCity(search:string,page: number = 1, perPage: number = 10): Promise<ReponseImageInfoCity> {
+    async getImageInfoChoseCity(search:string,page: number = 1, perPage: number = 20): Promise<ReponseImageInfoCity> {
         // https://pixabay.com/api/?key={apiKey}&q=Ho+Chi+Minh&image_type=photo&page=1&per_page=10
         const response = await fetch(`https://pixabay.com/api/?key=${this.apiUrl_Pixabay}&q=${search}&image_type=photo&page=${page}&per_page=${perPage}`)
         const data = await response.json();

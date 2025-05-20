@@ -66,7 +66,7 @@ const DynamicPopup: React.FC<DynamicPopupProps> = ({
                         animate="animate"
                         exit="exit"
                         transition={{ type: 'spring', damping: 20, stiffness: 100 }}
-                        onClick={(e) => e.stopPropagation()}
+                        // onClick={(e) => e.stopPropagation()}
                     >
                         <button
                             onClick={onClose}

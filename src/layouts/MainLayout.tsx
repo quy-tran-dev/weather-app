@@ -176,7 +176,7 @@ export default function MainLayout() {
             </button>
             <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5" borderRadius="0.5rem">
                 <div
-                    className={`h-[95%] w-[95%] rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-4 gap-2 overflow-hidden 
+                    className={`h-[95%] w-[95%] lg:h-[85%] lg:w-[85%] rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-4 gap-2 overflow-hidden 
                             ${loadingInitial ? 'bg-gray-100' : bgWeatherSecondary} transition-colors duration-500`}
                 >
                     {/* Left Sidebar */}
@@ -200,6 +200,18 @@ export default function MainLayout() {
                     </DynamicPopup>
                     {/* Right Content */}
                     <motion.div
+                        className={`relative col-span-1 lg:col-span-4 rounded-3xl overflow-hidden ${loadingInitial ? 'bg-white' : 'bg-white'} transition-all duration-500`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        {loadingInitial ? (
+                            <RightSideSkeleton />
+                        ) : (
+                            <RightSide bgWeatherSecondary={bgWeatherMain} currentCity={currentCity} />
+                        )}
+                    </motion.div>
+                    {/* <motion.div
                         className={`relative col-span-1 lg:col-span-4 p-0 sm:p-2 top-0 rounded-3xl h-full overflow-hidden text-black ${loadingInitial ? 'bg-white' : 'bg-white'} transition-all duration-500 `}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -211,7 +223,7 @@ export default function MainLayout() {
                         ) : (
                             <RightSide bgWeatherSecondary={bgWeatherMain} currentCity={currentCity} />
                         )}
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </SkeletonTheme>
             {!loadingInitial && !isPopupOpen && (
@@ -219,7 +231,6 @@ export default function MainLayout() {
                     onClick={toggleLeftSideBar}
                     className={`absolute bottom-4 right-4 ${textWeatherMain} cursor-pointer bg-white p-2 rounded-md shadow-md z-20 hover:bg-gray-700 transition-colors duration-300`}
                 >
-                    {/* Bạn có thể thay thế bằng icon menu */}
                     <SearchIcon className='hover:scale-110' />
                 </button>
             )}
